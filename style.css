@@ -37,3 +37,9 @@ html {
   grid-template-columns: repeat(4, 1fr);
 }
 
+#calculator-buttons button {
+  aspect-ratio: 1;
+  padding: 5px;
+  font-size: 2rem;
+}
+
