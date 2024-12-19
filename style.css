@@ -43,3 +43,9 @@ html {
   font-size: 2rem;
 }
 
+.logo {
+  padding: 5px;
+  background-image: url("logo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
