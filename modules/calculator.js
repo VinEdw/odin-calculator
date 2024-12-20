@@ -143,6 +143,13 @@ class Calculator {
     return null;
   }
 
+  enableAllButtons() {
+    const buttons = this.getAllButtons();
+    for (const button of buttons) {
+      button.disabled = false;
+    }
+  }
+
   reset() {
     this.firstRegister.reset();
     this.secondRegister.reset();
