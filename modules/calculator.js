@@ -1,6 +1,7 @@
 import * as keyNames from "./key_names.js";
 import * as calculatorStates from "./calculator_states.js";
 import { Display } from "./display.js";
+import { ButtonContainer } from "./button_container.js";
 import { Register } from "./register.js";
 import { operate } from "./operate.js";
 
@@ -10,7 +11,7 @@ class Calculator {
   state = calculatorStates.firstRegisterFocused;
 
   constructor(buttonContainerElement, displayElement) {
-    this.buttonContainerElement = buttonContainerElement;
+    this.buttonContainer = new ButtonContainer(buttonContainerElement);
     this.display = new Display(displayElement);
     this.updateEnabledButtons();
     this.setOperator("");
@@ -131,72 +132,31 @@ class Calculator {
     }
   }
 
-  getAllButtons() {
-    return this.buttonContainerElement.querySelectorAll("button");
-  }
-
-  getButton(key) {
-    const buttons = this.getAllButtons();
-    for (const button of buttons) {
-      if (key === button.dataset.key) {
-        return button;
-      }
-    }
-    return null;
-  }
-
-  enableAllButtons() {
-    const buttons = this.getAllButtons();
-    for (const button of buttons) {
-      button.disabled = false;
-    }
-  }
-
-  disableButton(key) {
-    const button = this.getButton(key);
-    if (button) {
-      button.disabled = true;
-    }
-  }
 
   updateEnabledButtons() {
-    this.enableAllButtons();
+    this.buttonContainer.enableAllButtons();
 
     switch (this.state) {
       case calculatorStates.firstRegisterFocused:
-        this.disableButton("=");
+        this.buttonContainer.disableButton("=");
         break;
       case calculatorStates.operatorPressed:
-        this.disableButton("=");
-        this.disableButton("Backspace");
+        this.buttonContainer.disableButton("=");
+        this.buttonContainer.disableButton("Backspace");
         break;
       case calculatorStates.secondRegisterFocused:
         break;
       case calculatorStates.equalPressed:
-        this.disableButton("=");
-        this.disableButton("Backspace");
+        this.buttonContainer.disableButton("=");
+        this.buttonContainer.disableButton("Backspace");
         break;
-    }
-  }
-
-  deselectAllButtons() {
-    const buttons = this.getAllButtons();
-    for (const button of buttons) {
-      button.classList.remove("selected");
-    }
-  }
-
-  selectButton(key) {
-    const button = this.getButton(key);
-    if (button) {
-      button.classList.add("selected");
     }
   }
 
   setOperator(operator) {
     this.operator = operator;
-    this.deselectAllButtons();
-    this.selectButton(operator);
+    this.buttonContainer.deselectAllButtons();
+    this.buttonContainer.selectButton(operator);
   }
 
   reset() {
