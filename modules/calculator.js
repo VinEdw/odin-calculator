@@ -1,6 +1,8 @@
+import * as keyNames from "./key_names.js";
 import * as calculatorStates from "./calculator_states.js";
 import { Display } from "./display.js";
 import { Register } from "./register.js";
+import { operate } from "./operate.js";
 
 class Calculator {
   firstRegister = new Register();
@@ -13,6 +15,29 @@ class Calculator {
     this.display = new Display(displayElement);
   }
 
+  handleInput(key) {
+    if (key === "Delete") {
+      this.reset();
+      return;
+    }
+
+    switch (this.state) {
+      case calculatorStates.firstRegisterFocused:
+        this.firstRegisterFocusedHandler(key);
+        break;
+      case calculatorStates.operatorPressed:
+        this.operatorPressedHandler(key);
+        break;
+      case calculatorStates.secondRegisterFocused:
+        this.secondRegisterFocusedHandler(key);
+        break;
+      case calculatorStates.equalPressed:
+        this.equalPressedHandler(key);
+        break;
+    }
+
+    this.updateDisplay();
+  }
 
   firstRegisterFocusedHandler(key) {
     if (keyNames.digits.includes(key) || key === ".") {
