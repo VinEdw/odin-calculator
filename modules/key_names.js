@@ -29,4 +29,4 @@ const all = [
 all.push(...digits);
 all.push(...operators);
 
-export { digits, operators, all }
+export { digits, operators, all };

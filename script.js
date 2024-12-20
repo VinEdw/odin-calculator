@@ -1,1 +1,1 @@
-import * as keyNames from "./modules/key_names.js"
+import * as keyNames from "./modules/key_names.js";
