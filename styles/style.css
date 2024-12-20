@@ -28,6 +28,7 @@ html {
   text-align: right;
   font-size: 4rem;
   background-color: silver;
+  overflow-wrap: anywhere;
 }
 
 #calculator-buttons {
