@@ -13,6 +13,7 @@ class Calculator {
   constructor(buttonContainerElement, displayElement) {
     this.buttonContainerElement = buttonContainerElement;
     this.display = new Display(displayElement);
+    this.updateEnabledButtons();
   }
 
   handleInput(key) {
@@ -37,6 +38,7 @@ class Calculator {
     }
 
     this.updateDisplay();
+    this.updateEnabledButtons();
   }
 
   firstRegisterFocusedHandler(key) {
@@ -197,6 +199,7 @@ class Calculator {
     this.operator = "";
     this.state = calculatorStates.firstRegisterFocused;
     this.updateDisplay();
+    this.updateEnabledButtons();
   }
 }
 
