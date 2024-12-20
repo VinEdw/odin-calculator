@@ -49,6 +49,14 @@ class Register {
     this.negative = !this.negative;
   }
 
+  getDisplayStr() {
+    let displayStr = this.str || "0";
+    if (this.negative) {
+      displayStr = "-" + displayStr;
+    }
+    return displayStr;
+  }
+
   reset() {
     this.str = "";
     this.negative = false;
