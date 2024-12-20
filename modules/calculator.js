@@ -65,6 +65,22 @@ class Calculator {
       this.secondRegister.popCharacter();
     }
   }
+
+  equalPressedHandler(key) {
+    if (keyNames.digits.includes(key) || key === ".") {
+      this.firstRegister.reset();
+      this.firstRegister.appendCharacter(key);
+      this.state = calculatorStates.firstRegisterFocused;
+    }
+    else if (keyNames.operators.includes(key)) {
+      this.operator = key;
+      this.state = calculatorStates.operatorPressed;
+    }
+    else if (key === "~") {
+      this.firstRegister.toggleSign();
+    }
+  }
+
   performCalculation() {
     let result = operate(this.operator, this.firstRegister.getValue(), this.secondRegister.getValue());
     this.firstRegister.setValue(result);
