@@ -28,3 +28,5 @@ function operate(operator, x, y) {
       return NaN;
   }
 }
+
+export { operate };
