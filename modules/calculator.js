@@ -129,6 +129,10 @@ class Calculator {
     }
   }
 
+  getAllButtons() {
+    return this.buttonContainerElement.querySelectorAll("button");
+  }
+
   reset() {
     this.firstRegister.reset();
     this.secondRegister.reset();
