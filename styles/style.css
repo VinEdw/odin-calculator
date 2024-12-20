@@ -44,6 +44,10 @@ html {
   font-size: 2rem;
 }
 
+#calculator-buttons button.selected {
+  filter: brightness(0.8);
+}
+
 .logo {
   padding: 5px;
   background-image: url("../images/logo.png");
