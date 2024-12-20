@@ -4,6 +4,11 @@ class Register {
   negative = false;
   str = "";
 
+  getValue() {
+    let val = +this.str;
+    return this.negative ? -val : val;
+  }
+
   appendCharacter(char, maxCharacters = 15) {
     if (this.str.length >= maxCharacters) {
       return;
