@@ -13,6 +13,22 @@ class Calculator {
     this.display = new Display(displayElement);
   }
 
+
+  firstRegisterFocusedHandler(key) {
+    if (keyNames.digits.includes(key) || key === ".") {
+      this.firstRegister.appendCharacter(key);
+    }
+    else if (keyNames.operators.includes(key)) {
+      this.operator = key;
+      this.state = calculatorStates.operatorPressed;
+    }
+    else if (key === "~") {
+      this.firstRegister.toggleSign();
+    }
+    else if (key === "Backspace") {
+      this.firstRegister.popCharacter();
+    }
+  }
   updateDisplay() {
     switch (this.state) {
       case calculatorStates.firstRegisterFocused:
