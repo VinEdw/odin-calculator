@@ -21,7 +21,7 @@ class Register {
     this.str = numStr;
   }
 
-  appendCharacter(char, maxCharacters = 15) {
+  appendCharacter(char, maxCharacters = 12) {
     if (this.str.length >= maxCharacters) {
       return;
     }
