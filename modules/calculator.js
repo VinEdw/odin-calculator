@@ -43,6 +43,13 @@ class Calculator {
       this.state = calculatorStates.secondRegisterFocused;
     }
   }
+
+  performCalculation() {
+    let result = operate(this.operator, this.firstRegister.getValue(), this.secondRegister.getValue());
+    this.firstRegister.setValue(result);
+    this.secondRegister.reset();
+  }
+
   updateDisplay() {
     switch (this.state) {
       case calculatorStates.firstRegisterFocused:
