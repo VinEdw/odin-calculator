@@ -44,6 +44,11 @@ class Register {
     this.str = this.str.slice(0, -1);
     return char;
   }
+
+  toggleSign() {
+    this.negative = !this.negative;
+  }
+
 }
 
 export { Register };
