@@ -7,13 +7,13 @@ import { operate } from "./operate.js";
 class Calculator {
   firstRegister = new Register();
   secondRegister = new Register();
-  operator = "";
   state = calculatorStates.firstRegisterFocused;
 
   constructor(buttonContainerElement, displayElement) {
     this.buttonContainerElement = buttonContainerElement;
     this.display = new Display(displayElement);
     this.updateEnabledButtons();
+    this.setOperator("");
   }
 
   handleInput(key) {
@@ -46,7 +46,7 @@ class Calculator {
       this.firstRegister.appendCharacter(key);
     }
     else if (keyNames.operators.includes(key)) {
-      this.operator = key;
+      this.setOperator(key);
       this.state = calculatorStates.operatorPressed;
     }
     else if (key === "~") {
@@ -63,7 +63,7 @@ class Calculator {
       this.state = calculatorStates.secondRegisterFocused;
     }
     else if (keyNames.operators.includes(key)) {
-      this.operator = key;
+      this.setOperator(key);
     }
     else if (key === "~") {
       this.secondRegister.toggleSign();
@@ -77,12 +77,12 @@ class Calculator {
     }
     else if (keyNames.operators.includes(key)) {
       this.performCalculation();
-      this.operator = key;
+      this.setOperator(key);
       this.state = calculatorStates.operatorPressed;
     }
     else if (key === "=") {
       this.performCalculation();
-      this.operator = "";
+      this.setOperator("");
       this.state = calculatorStates.equalPressed;
     }
     else if (key === "~") {
@@ -100,7 +100,7 @@ class Calculator {
       this.state = calculatorStates.firstRegisterFocused;
     }
     else if (keyNames.operators.includes(key)) {
-      this.operator = key;
+      this.setOperator(key);
       this.state = calculatorStates.operatorPressed;
     }
     else if (key === "~") {
@@ -193,10 +193,16 @@ class Calculator {
     }
   }
 
+  setOperator(operator) {
+    this.operator = operator;
+    this.deselectAllButtons();
+    this.selectButton(operator);
+  }
+
   reset() {
     this.firstRegister.reset();
     this.secondRegister.reset();
-    this.operator = "";
+    this.setOperator("");
     this.state = calculatorStates.firstRegisterFocused;
     this.updateDisplay();
     this.updateEnabledButtons();
