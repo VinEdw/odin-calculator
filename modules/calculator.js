@@ -157,6 +157,26 @@ class Calculator {
     }
   }
 
+  updateEnabledButtons() {
+    this.enableAllButtons();
+
+    switch (this.state) {
+      case calculatorStates.firstRegisterFocused:
+        this.disableButton("=");
+        break;
+      case calculatorStates.operatorPressed:
+        this.disableButton("=");
+        this.disableButton("Backspace");
+        break;
+      case calculatorStates.secondRegisterFocused:
+        break;
+      case calculatorStates.equalPressed:
+        this.disableButton("=");
+        this.disableButton("Backspace");
+        break;
+    }
+  }
+
   reset() {
     this.firstRegister.reset();
     this.secondRegister.reset();
