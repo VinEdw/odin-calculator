@@ -133,6 +133,16 @@ class Calculator {
     return this.buttonContainerElement.querySelectorAll("button");
   }
 
+  getButton(key) {
+    const buttons = this.getAllButtons();
+    for (const button of buttons) {
+      if (key === button.dataset.key) {
+        return button;
+      }
+    }
+    return null;
+  }
+
   reset() {
     this.firstRegister.reset();
     this.secondRegister.reset();
