@@ -184,6 +184,13 @@ class Calculator {
     }
   }
 
+  selectButton(key) {
+    const button = this.getButton(key);
+    if (button) {
+      button.classList.add("selected");
+    }
+  }
+
   reset() {
     this.firstRegister.reset();
     this.secondRegister.reset();
