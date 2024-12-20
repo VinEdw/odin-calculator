@@ -87,6 +87,14 @@ class Calculator {
         break;
     }
   }
+
+  reset() {
+    this.firstRegister.reset();
+    this.secondRegister.reset();
+    this.operator = "";
+    this.state = calculatorStates.firstRegisterFocused;
+    this.updateDisplay();
+  }
 }
 
 export { Calculator };
