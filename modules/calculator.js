@@ -1,4 +1,5 @@
 import * as calculatorStates from "./calculator_states.js";
+import { Display } from "./display.js";
 import { Register } from "./register.js";
 
 class Calculator {
