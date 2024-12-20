@@ -29,6 +29,20 @@ class Calculator {
       this.firstRegister.popCharacter();
     }
   }
+
+  operatorPressedHandler(key) {
+    if (keyNames.digits.includes(key) || key === ".") {
+      this.secondRegister.appendCharacter(key);
+      this.state = calculatorStates.secondRegisterFocused;
+    }
+    else if (keyNames.operators.includes(key)) {
+      this.operator = key;
+    }
+    else if (key === "~") {
+      this.secondRegister.toggleSign();
+      this.state = calculatorStates.secondRegisterFocused;
+    }
+  }
   updateDisplay() {
     switch (this.state) {
       case calculatorStates.firstRegisterFocused:
