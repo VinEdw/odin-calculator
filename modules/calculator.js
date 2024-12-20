@@ -150,6 +150,13 @@ class Calculator {
     }
   }
 
+  disableButton(key) {
+    const button = this.getButton(key);
+    if (button) {
+      button.disabled = true;
+    }
+  }
+
   reset() {
     this.firstRegister.reset();
     this.secondRegister.reset();
