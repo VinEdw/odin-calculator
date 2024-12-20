@@ -34,6 +34,16 @@ class Register {
       this.str += char;
     }
   }
+
+  popCharacter() {
+    if (!this.str.length) {
+      return null;
+    }
+
+    let char = this.str.at(-1);
+    this.str = this.str.slice(0, -1);
+    return char;
+  }
 }
 
 export { Register };
