@@ -49,6 +49,10 @@ class Register {
     this.negative = !this.negative;
   }
 
+  reset() {
+    this.str = "";
+    this.negative = false;
+  }
 }
 
 export { Register };
