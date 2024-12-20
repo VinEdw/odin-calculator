@@ -1,4 +1,5 @@
 class Register {
+  negative = false;
   str = "";
 }
 
