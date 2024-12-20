@@ -44,6 +44,27 @@ class Calculator {
     }
   }
 
+  secondRegisterFocusedHandler(key) {
+    if (keyNames.digits.includes(key) || key === ".") {
+      this.secondRegister.appendCharacter(key);
+    }
+    else if (keyNames.operators.includes(key)) {
+      this.performCalculation();
+      this.operator = key;
+      this.state = calculatorStates.operatorPressed;
+    }
+    else if (key === "=") {
+      this.performCalculation();
+      this.operator = "";
+      this.state = calculatorStates.equalPressed;
+    }
+    else if (key === "~") {
+      this.secondRegister.toggleSign();
+    }
+    else if (key === "Backspace") {
+      this.secondRegister.popCharacter();
+    }
+  }
   performCalculation() {
     let result = operate(this.operator, this.firstRegister.getValue(), this.secondRegister.getValue());
     this.firstRegister.setValue(result);
