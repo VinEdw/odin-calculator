@@ -177,6 +177,13 @@ class Calculator {
     }
   }
 
+  deselectAllButtons() {
+    const buttons = this.getAllButtons();
+    for (const button of buttons) {
+      button.classList.remove("selected");
+    }
+  }
+
   reset() {
     this.firstRegister.reset();
     this.secondRegister.reset();
