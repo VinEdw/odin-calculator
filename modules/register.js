@@ -9,6 +9,18 @@ class Register {
     return this.negative ? -val : val;
   }
 
+  setValue(value) {
+    let numStr = value.toString();
+    if (numStr.startsWith("-")) {
+      numStr = numStr.slice(1);
+      this.negative = true;
+    }
+    else {
+      this.negative = false;
+    }
+    this.str = numStr;
+  }
+
   appendCharacter(char, maxCharacters = 15) {
     if (this.str.length >= maxCharacters) {
       return;
