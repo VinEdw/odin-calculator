@@ -3,8 +3,8 @@ class Display {
     this.element = element;
   }
 
-  showRegister(register) {
-    this.element.textContent = register.getDisplayStr();
+  showRegister(register, sigFigs = 0) {
+    this.element.textContent = register.getDisplayStr(sigFigs);
   }
 }
 

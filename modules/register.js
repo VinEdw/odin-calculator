@@ -100,12 +100,18 @@ class Register {
     this.negative = !this.negative;
   }
 
-  getDisplayStr() {
-    let displayStr = this.str || "0";
-    if (this.negative) {
-      displayStr = "-" + displayStr;
+  getDisplayStr(sigFigs = 0) {
+    if (sigFigs) {
+      let precisionStr = this.getValue().toPrecision(sigFigs);
+      return formatForDisplay(precisionStr);
     }
-    return displayStr;
+    else {
+      let displayStr = this.str || "0";
+      if (this.negative) {
+        displayStr = "-" + displayStr;
+      }
+      return displayStr;
+    }
   }
 
   reset() {
