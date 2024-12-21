@@ -1,5 +1,38 @@
 import * as keyNames from "./key_names.js";
 
+function countSigFigs(valueStr) {
+  // Select the numeric part of the value string before the 'e'
+  // Remove any +/- symbols
+  // Remove any leading zeros
+  const numericPart = valueStr.toLowerCase()
+    .replaceAll(/[+-]/g, "")
+    .split("e")[0]
+    .replace(/^0+/, "");
+
+  let sigFigCount = 0;
+
+  if (numericPart.includes(".")) {
+    // If the numeric part includes a decimal, split at the decimal point
+    let [preDecimal, postDecimal] = numericPart.split(".");
+    // Count all the digits before the decimal as significant
+    sigFigCount += preDecimal.length;
+    if (preDecimal) {
+      // If there are sig figs before the decimal, then all digits after the decimal are significant
+      sigFigCount += postDecimal.length;
+    }
+    else {
+      // If there are no sig figs before the decimal, then all digits after any leading zeros are significant
+      sigFigCount += postDecimal.replace(/^0+/, "").length;
+    }
+  }
+  else {
+    // Count any digits remaining after removing trailing zeroes
+    sigFigCount += numericPart.replace(/0+$/, "").length;
+  }
+
+  return sigFigCount;
+}
+
 class Register {
   negative = false;
   str = "";
