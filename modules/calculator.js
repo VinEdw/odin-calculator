@@ -132,7 +132,6 @@ class Calculator {
     }
   }
 
-
   updateEnabledButtons() {
     this.buttonContainer.enableAllButtons();
 
