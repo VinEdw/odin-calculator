@@ -33,6 +33,23 @@ function countSigFigs(valueStr) {
   return sigFigCount;
 }
 
+// Remove trailing zeroes after the decimal, and a trailing decimal point
+function formatForDisplay(valueStr) {
+  let eFound = valueStr.match(/e/i);
+  let hasDecimal = valueStr.includes(".");
+
+  if (eFound) {
+    let [numericPart, exponentPart] = valueStr.split(/e/i, 2);
+    return numericPart.replace(/\.?0+$/, "") + eFound + exponentPart;
+  }
+  else if (hasDecimal) {
+    return valueStr.replace(/\.?0+$/, "");
+  }
+  else {
+    return valueStr;
+  }
+}
+
 class Register {
   negative = false;
   str = "";
