@@ -54,8 +54,9 @@ class Register {
     this.str = numStr;
   }
 
-  appendCharacter(char, maxCharacters = 12) {
-    if (this.str.length >= maxCharacters) {
+  appendCharacter(char, maxSigFigs = 9) {
+    let sigFigs = countSigFigs(this.str);
+    if (sigFigs >= maxSigFigs) {
       return;
     }
     
