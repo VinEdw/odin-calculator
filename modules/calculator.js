@@ -121,13 +121,13 @@ class Calculator {
         this.display.showRegister(this.firstRegister);
         break;
       case calculatorStates.operatorPressed:
-        this.display.showRegister(this.firstRegister);
+        this.display.showRegister(this.firstRegister, 9);
         break;
       case calculatorStates.secondRegisterFocused:
         this.display.showRegister(this.secondRegister);
         break;
       case calculatorStates.equalPressed:
-        this.display.showRegister(this.firstRegister);
+        this.display.showRegister(this.firstRegister, 9);
         break;
     }
   }
