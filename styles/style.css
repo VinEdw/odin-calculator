@@ -56,7 +56,7 @@ html {
   background-repeat: no-repeat;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   #calculator-buttons button {
     font-size: 1.2rem
   }
