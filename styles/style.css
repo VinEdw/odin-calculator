@@ -54,3 +54,10 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+@media (max-width: 400px) {
+  #calculator-buttons button {
+    font-size: 1.2rem
+  }
+}
+
