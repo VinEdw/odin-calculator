@@ -42,7 +42,7 @@ html {
   aspect-ratio: 1;
   padding: 5px;
   font-size: 2rem;
-  touch-action: none;
+  touch-action: manipulation;
 }
 
 #calculator-buttons button.selected {
