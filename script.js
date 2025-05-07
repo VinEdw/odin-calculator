@@ -22,6 +22,8 @@ document.addEventListener("keydown", (e) => {
   }
   else if (e.key === "Enter") {
     // Treat Enter as an equal sign
+    // Prevent Enter from activating the last pressed button
+    e.preventDefault();
     calculator.handleInput("=");
   }
 });
